@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 type InputAreaType = {
-    name: string
-    value: number
+    name?: string
+    value?: number
 }
 const InputAreaStyle = styled.input.attrs({type: "number"})`
     width: 30%;
