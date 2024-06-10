@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
+type InputAreaType = {
+    name: string
+    value: number
+}
 const InputAreaStyle = styled.input.attrs({type: "number"})`
     width: 30%;
   height: 50px;
@@ -14,10 +18,10 @@ const InputAreaBody = styled.div`
 
 `
 
-export const InputArea = () => {
+export const InputArea: React.FC<InputAreaType> = ({value, name}) => {
     return (
         <InputAreaBody>
-            <span>{'props'}</span>
+            <span>{name}</span>
             <InputAreaStyle/>
         </InputAreaBody>
     );
