@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 type ButtonPropsType = {
     name?: string,
-    callback?: ()=>void
+    callback?: (arg?: any)=>void
 }
 
 const StyledButton  = styled.button`

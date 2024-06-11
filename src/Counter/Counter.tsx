@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {Button} from "./Button/Button";
 import {SetterDisplay} from "./SetterDisplay/SetterDisplay";
 import {useDispatch, useSelector} from "react-redux";
-import {incrementValue} from "../State/Store/Reducers/incrementReducer";
+import {incrementValue, setCurrentValueAC} from "../State/Store/Reducers/incrementReducer";
 import {AppRootStateType} from "../State/Store/store";
 
 const CounterBody = styled.div`
@@ -41,8 +41,8 @@ export const Counter = () => {
     const currentValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.currentValue)
     const startValue = useSelector<AppRootStateType, number>(state => state.values.setStartValue)
     const maxValue = useSelector<AppRootStateType, number>(state => state.values.setMaxValue)
-    const setCurrentValue = ()=>{
-
+    const setCurrentValue = (value: number, )=>{
+        dispatch(setCurrentValueAC(startValue))
     }
     const incCurrentValue=()=>{
         console.log('1212')
@@ -51,9 +51,9 @@ export const Counter = () => {
     return (
         <ParentContainer>
             <SetterBody>
-                <SetterDisplay/>
+                <SetterDisplay startValue={startValue} maxValue={maxValue}/>
                 <ButtonBlock>
-                    <Button name={'SET'}/>
+                    <Button name={'SET'} callback={setCurrentValue}/>
                     <Button name={'RESET'}/>
                 </ButtonBlock>
             </SetterBody>

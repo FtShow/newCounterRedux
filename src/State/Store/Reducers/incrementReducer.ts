@@ -1,5 +1,5 @@
 const INCREMENT_VALUE = "INCREMENT_VALUE"
-const MEMO_SET_VALUE = "MEMO_SET_VALUE"
+const SET_CURRENT_VALUE = "SET_CURRENT_VALUE"
 
 export type incrementReducerStateType = {
     currentValue: number,
@@ -16,6 +16,10 @@ export const incrementingValueReducer = (state: incrementReducerStateType = init
         case INCREMENT_VALUE: {
             return {...state, currentValue: state.currentValue+1}
         }
+        case SET_CURRENT_VALUE: {
+            return {...state, currentValue: action.payload.newValue, memoValue: action.payload.newValue}
+
+        }
 
         default :
             return state
@@ -23,7 +27,7 @@ export const incrementingValueReducer = (state: incrementReducerStateType = init
 }
 type combineActionType = incrementValueType | changeMemoValueType
 type incrementValueType = ReturnType<typeof incrementValue>
-type changeMemoValueType = ReturnType<typeof changeMemoValue>
+type changeMemoValueType = ReturnType<typeof setCurrentValueAC>
 
 export const incrementValue = () => {
     return {
@@ -31,9 +35,9 @@ export const incrementValue = () => {
     } as const
 }
 
-export const changeMemoValue = (newValue: number) => {
+export const setCurrentValueAC = (newValue: number) => {
     return {
-        type: MEMO_SET_VALUE,
+        type: SET_CURRENT_VALUE,
         payload: {
             newValue
         }
