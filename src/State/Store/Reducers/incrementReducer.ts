@@ -14,7 +14,7 @@ export const incrementingValueReducer = (state: incrementReducerStateType = init
     incrementReducerStateType => {
     switch (action.type) {
         case INCREMENT_VALUE: {
-            return {...state}
+            return {...state, currentValue: state.currentValue+1}
         }
 
         default :
@@ -25,7 +25,7 @@ type combineActionType = incrementValueType | changeMemoValueType
 type incrementValueType = ReturnType<typeof incrementValue>
 type changeMemoValueType = ReturnType<typeof changeMemoValue>
 
-export const incrementValue = (newValue: number) => {
+export const incrementValue = () => {
     return {
         type: INCREMENT_VALUE,
     } as const

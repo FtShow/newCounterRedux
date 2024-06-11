@@ -5,8 +5,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../State/Store/store";
 import {changeMaxValueAC, changeStartValueAC} from "../../State/Store/Reducers/setValueReducer";
 
+type SetterDisplayProps = {
+    startValue: number,
+    maxValue: number
+}
 
-export const SetterDisplay = () => {
+
+export const SetterDisplay: React.FC<SetterDisplayProps> = ({maxValue,startValue}) => {
     const dispatch = useDispatch()
     const setStartValue = (event: React.ChangeEvent<HTMLInputElement>)=>{
         dispatch(changeStartValueAC(+event.currentTarget.value))
@@ -14,8 +19,7 @@ export const SetterDisplay = () => {
     const setMaxValue = (event: React.ChangeEvent<HTMLInputElement>)=>{
         dispatch(changeMaxValueAC(+event.currentTarget.value))
     }
-    const startValue = useSelector<AppRootStateType, number>(state => state.values.setStartValue)
-    const maxValue = useSelector<AppRootStateType, number>(state => state.values.setMaxValue)
+
 
 
 //const dispatch = useDispatch()
