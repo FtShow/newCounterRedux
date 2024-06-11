@@ -1,10 +1,12 @@
 import { combineReducers, createStore } from 'redux'
-import {setterValueReducer} from "./Reducers/calcReducer";
+import {setterValueReducer} from "./Reducers/setValueReducer";
+import {incrementingValueReducer} from "./Reducers/incrementReducer";
 
 // объединяя reducer-ы с помощью combineReducers,
 // мы задаём структуру нашего единственного объекта-состояния
 const rootReducer = combineReducers({
     values: setterValueReducer,
+    incrementingValue: incrementingValueReducer,
 })
 // непосредственно создаём store
 export const store = createStore(rootReducer)

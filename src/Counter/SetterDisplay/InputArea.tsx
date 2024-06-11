@@ -3,6 +3,7 @@ import styled from "styled-components";
 type InputAreaType = {
     name?: string
     value?: number
+    callback?: (e:any)=>void
 }
 const InputAreaStyle = styled.input.attrs({type: "number"})`
     width: 30%;
@@ -18,11 +19,11 @@ const InputAreaBody = styled.div`
 
 `
 
-export const InputArea: React.FC<InputAreaType> = ({value, name}) => {
+export const InputArea: React.FC<InputAreaType> = ({value, name, callback}) => {
     return (
         <InputAreaBody>
             <span>{name}</span>
-            <InputAreaStyle/>
+            <InputAreaStyle value={value} onChange={callback}/>
         </InputAreaBody>
     );
 };

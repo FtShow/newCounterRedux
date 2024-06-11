@@ -1,18 +1,18 @@
 const SET_START_VALUE = "SET_START_VALUE"
-const SET_MAX_VALUE = "SET_MIN_VALUE"
+const SET_MAX_VALUE = "SET_MAX_VALUE"
 
 export type reducerStateType = {
     setStartValue: number,
     setMaxValue: number,
     viewValue: number,
 }
-const initialState: reducerStateType = {
+export const initialState: reducerStateType = {
     setStartValue: 0,
-    setMaxValue: 0,
+    setMaxValue: 4,
     viewValue: 0,
 }
 
-export const setterValueReducer = (state: reducerStateType = initialState, action: combineActionType) => {
+export const setterValueReducer = (state: reducerStateType = initialState, action: combineActionType):reducerStateType => {
     switch (action.type) {
         case SET_START_VALUE: {
             return {...state, setStartValue: action.payload.newValue}
@@ -22,14 +22,13 @@ export const setterValueReducer = (state: reducerStateType = initialState, actio
         }
         default :
             return state
-
     }
 }
 type combineActionType = changeStartValue | changeMaxValue
 type changeStartValue = ReturnType<typeof changeStartValueAC>
 type changeMaxValue = ReturnType<typeof changeMaxValueAC>
 
-const changeStartValueAC = (newValue: number) => {
+export const changeStartValueAC = (newValue: number) => {
     return {
         type: SET_START_VALUE,
         payload: {
@@ -38,7 +37,7 @@ const changeStartValueAC = (newValue: number) => {
     } as const
 }
 
-const changeMaxValueAC = (newValue: number) => {
+export const changeMaxValueAC = (newValue: number) => {
     return {
         type: SET_MAX_VALUE,
         payload: {
