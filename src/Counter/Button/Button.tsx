@@ -2,7 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 type ButtonPropsType = {
     name?: string,
-    callback?: (arg?: any)=>void
+    callback?: any
+    disabled?: boolean
 }
 
 const StyledButton  = styled.button`
@@ -18,9 +19,9 @@ const StyledButton  = styled.button`
     border: 3px solid black;
   }
 `
-export const Button: React.FC<ButtonPropsType> = ({name, callback}) => {
+export const Button: React.FC<ButtonPropsType> = ({name, callback, disabled}) => {
     return (
-        <StyledButton onClick={callback}>
+        <StyledButton onClick={callback} disabled={disabled}>
             {name}
         </StyledButton>
     );

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {Button} from "./Button/Button";
 import {SetterDisplay} from "./SetterDisplay/SetterDisplay";
 import {useDispatch, useSelector} from "react-redux";
-import {incrementValue, setCurrentValueAC} from "../State/Store/Reducers/incrementReducer";
+import {incrementValue, resetValueAC, setCurrentValueAC} from "../State/Store/Reducers/incrementReducer";
 import {AppRootStateType} from "../State/Store/store";
 
 const CounterBody = styled.div`
@@ -32,7 +32,7 @@ const ParentContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+
 `
 
 
@@ -40,26 +40,32 @@ export const Counter = () => {
     const dispatch = useDispatch()
     const currentValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.currentValue)
     const startValue = useSelector<AppRootStateType, number>(state => state.values.setStartValue)
-    const maxValue = useSelector<AppRootStateType, number>(state => state.values.setMaxValue)
-    const setCurrentValue = (value: number, )=>{
-        dispatch(setCurrentValueAC(startValue))
+    const maxSetterValue = useSelector<AppRootStateType, number>(state => state.values.setMaxValue)
+    const limitValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.memoMaxValue)
+    const correctValue = currentValue<limitValue
+    const setCurrentValue = () => {
+        dispatch(setCurrentValueAC(startValue, maxSetterValue))
     }
-    const incCurrentValue=()=>{
+    const incCurrentValue = () => {
         console.log('1212')
         dispatch(incrementValue())
+    }
+    const resetValue = () => {
+        dispatch(resetValueAC())
     }
     return (
         <ParentContainer>
             <SetterBody>
-                <SetterDisplay startValue={startValue} maxValue={maxValue}/>
-                <ButtonBlock>
-                    <Button name={'SET'} callback={setCurrentValue}/>
-                    <Button name={'RESET'}/>
-                </ButtonBlock>
+                <SetterDisplay startValue={startValue} maxValue={maxSetterValue}/>
+                <Button name={'SET'} callback={setCurrentValue}/>
             </SetterBody>
             <CounterBody>
-                <Display count={currentValue}/>
-                <Button name={'INC'} callback={incCurrentValue}/>
+                <Display count={currentValue} correctValue={correctValue}/>
+                <ButtonBlock>
+                    <Button name={'RESET'} callback={resetValue}/>
+                    <Button name={'INC'} callback={incCurrentValue} disabled={!correctValue}/>
+
+                </ButtonBlock>
 
             </CounterBody>
         </ParentContainer>

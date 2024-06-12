@@ -10,15 +10,16 @@ type CountType = {
 
 
 export const Display: React.FC<CountType> = ({count, correctValue = true}) => {
-    const currentValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.currentValue)
+    //const currentValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.currentValue)
     const CounterDisplay = styled.span`
-      font-size: 80px;
+      position: absolute;
+      font-size: ${correctValue ? "80px": "100px"};
       text-align: center;
-      color: ${correctValue ? "#ffffff" : "#rerere"};
+      color: ${correctValue ? "#ffffff" : "red"};
     `
     return (
         <CounterDisplay>
-            {currentValue}
+            {count}
         </CounterDisplay>
     );
 };

@@ -1,6 +1,7 @@
 const SET_START_VALUE = "SET_START_VALUE"
 const SET_MAX_VALUE = "SET_MAX_VALUE"
 
+
 export type reducerStateType = {
     setStartValue: number,
     setMaxValue: number,
@@ -8,7 +9,7 @@ export type reducerStateType = {
 }
 export const initialState: reducerStateType = {
     setStartValue: 0,
-    setMaxValue: 4,
+    setMaxValue: 1,
     viewValue: 0,
 }
 
@@ -20,6 +21,7 @@ export const setterValueReducer = (state: reducerStateType = initialState, actio
         case SET_MAX_VALUE: {
             return {...state, setMaxValue: action.payload.newValue}
         }
+
         default :
             return state
     }
