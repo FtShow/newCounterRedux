@@ -13,10 +13,10 @@ export const initialState: reducerStateType = {
     viewValue: 0,
 }
 
-export const setterValueReducer = (state: reducerStateType = initialState, action: combineActionType):reducerStateType => {
+export const setterValueReducer = (state: reducerStateType = initialState, action: combineActionType): reducerStateType => {
     switch (action.type) {
         case SET_START_VALUE: {
-            return {...state, setStartValue: action.payload.newValue, }
+            return {...state, setStartValue: action.payload.newValue,}
         }
         case SET_MAX_VALUE: {
             return {...state, setMaxValue: action.payload.newValue}

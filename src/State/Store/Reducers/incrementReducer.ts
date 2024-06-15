@@ -17,11 +17,13 @@ export const incrementingValueReducer = (state: incrementReducerStateType = init
     incrementReducerStateType => {
     switch (action.type) {
         case INCREMENT_VALUE: {
-            return {...state, currentValue: state.currentValue+1}
+            return {...state, currentValue: state.currentValue + 1}
         }
         case SET_CURRENT_VALUE: {
-            return {...state, currentValue: action.payload.newValue, memoValue: action.payload.newValue,
-                memoMaxValue: action.payload.maxValue}
+            return {
+                ...state, currentValue: action.payload.newValue, memoValue: action.payload.newValue,
+                memoMaxValue: action.payload.maxValue
+            }
 
         }
         case RESET_VALUE: {
@@ -52,7 +54,7 @@ export const setCurrentValueAC = (newValue: number, maxValue: number) => {
         }
     } as const
 }
-export const resetValueAC = () =>{
+export const resetValueAC = () => {
     return {
         type: RESET_VALUE,
     } as const

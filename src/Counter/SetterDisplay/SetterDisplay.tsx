@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from "styled-components";
 import {InputArea} from "./InputArea";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../State/Store/store";
+import {useDispatch} from "react-redux";
 import {changeMaxValueAC, changeStartValueAC} from "../../State/Store/Reducers/setValueReducer";
 
 type SetterDisplayProps = {

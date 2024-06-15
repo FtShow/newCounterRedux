@@ -15,7 +15,8 @@ const StyledButton  = styled.button`
   border-radius: 5px;
   border: none;
   box-sizing: border-box;
-  &:hover{
+
+  &:hover {
     border: 3px solid black;
   }
 `

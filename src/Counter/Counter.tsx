@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './counterStyle.module.css'
 import {Display} from "./Display/Display";
 import styled from "styled-components";
 import {Button} from "./Button/Button";
@@ -42,7 +41,7 @@ export const Counter = () => {
     const startValue = useSelector<AppRootStateType, number>(state => state.values.setStartValue)
     const maxSetterValue = useSelector<AppRootStateType, number>(state => state.values.setMaxValue)
     const limitValue = useSelector<AppRootStateType, number>(state => state.incrementingValue.memoMaxValue)
-    const correctValue = currentValue<limitValue
+    const correctValue = currentValue < limitValue
     const setCurrentValue = () => {
         dispatch(setCurrentValueAC(startValue, maxSetterValue))
     }
